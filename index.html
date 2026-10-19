@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#112a2c">
+  <title>北京教育学院附属丰台实验学校 · 升旗规划</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">升</div>
+      <div>
+        <p class="eyebrow">BEIJING · FENGTAI</p>
+        <h1>升旗规划模拟</h1>
+        <p class="subtitle">北京教育学院附属丰台实验学校</p>
+      </div>
+      <span class="version">国旗与校旗 · v1.1</span>
+    </header>
+
+    <main class="main-grid">
+      <section class="scene-panel" aria-label="三面旗帜的升旗模拟">
+        <div class="scene-header">
+          <div><span class="section-number">01 / 现场模拟</span><h2>升旗场景</h2></div>
+          <div class="live-tag"><span id="statusLight"></span><span id="statusText">准备就绪</span></div>
+        </div>
+
+        <svg class="flag-scene" viewBox="0 0 1200 650" role="img" aria-labelledby="sceneTitle sceneDesc" preserveAspectRatio="xMidYMid meet">
+          <title id="sceneTitle">三旗杆升旗场景</title>
+          <desc id="sceneDesc">国歌环节升起中央五星红旗，两面绿色校旗在杆底；校歌环节国旗位于杆顶，两面校旗同步升起。</desc>
+          <defs>
+            <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d9e7e5"/><stop offset=".65" stop-color="#eef2e9"/><stop offset="1" stop-color="#f3e8d1"/></linearGradient>
+            <linearGradient id="pole" x2="1" y2=".2"><stop stop-color="#768484"/><stop offset=".35" stop-color="#e5e9e3"/><stop offset=".65" stop-color="#91a1a0"/><stop offset="1" stop-color="#596e6d"/></linearGradient>
+            <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#aab9a8"/><stop offset="1" stop-color="#738e83"/></linearGradient>
+            <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#244243" flood-opacity=".18"/></filter>
+            <pattern id="paving" width="75" height="28" patternUnits="userSpaceOnUse"><path d="M0 0H75M0 28H75M38 0V28" fill="none" stroke="#dae0d5" stroke-opacity=".5" stroke-width="2"/></pattern>
+          </defs>
+          <rect width="1200" height="650" fill="url(#sky)"/>
+          <circle cx="970" cy="125" r="52" fill="#fff8d9" opacity=".68"/>
+          <path d="M0 427 Q185 394 341 418 T670 419 T1200 403 V564 H0Z" fill="#c3d1bd" opacity=".55"/>
+          <path d="M0 484 Q290 451 576 484 T1200 466 V565 H0Z" fill="#a5bca9" opacity=".43"/>
+          <path d="M0 551H1200V650H0Z" fill="url(#ground)"/>
+          <path d="M0 565H1200V650H0Z" fill="url(#paving)" opacity=".48"/>
+          <path d="M390 650 545 551H654L822 650Z" fill="#d9dcd1" opacity=".8"/>
+          <path d="M450 650 560 551M750 650 640 551" stroke="#b9c6bd" stroke-width="3"/>
+
+          <g class="side-pole" filter="url(#shadow)">
+            <rect x="246" y="151" width="10" height="409" rx="5" fill="url(#pole)"/>
+            <circle cx="251" cy="147" r="9" fill="#d8bd7e"/>
+            <rect x="232" y="559" width="38" height="12" rx="2" fill="#617979"/>
+            <g id="leftSchoolFlag" transform="translate(0 122)"><g class="flag-wave">
+              <path d="M256 333H407Q399 354 407 382T407 433H256Z" fill="#238e69"/>
+              <path d="M256 333H407Q398 358 407 382" fill="none" stroke="#70c4a1" stroke-width="4" opacity=".65"/>
+              <text x="330" y="380" text-anchor="middle" fill="#f4f5db" font-size="19" font-weight="700" letter-spacing="3">校旗</text>
+              <text x="330" y="406" text-anchor="middle" fill="#d4f0dd" font-size="12" letter-spacing="2">基础模型</text>
+            </g></g>
+          </g>
+          <g class="side-pole" filter="url(#shadow)">
+            <rect x="945" y="151" width="10" height="409" rx="5" fill="url(#pole)"/>
+            <circle cx="950" cy="147" r="9" fill="#d8bd7e"/>
+            <rect x="931" y="559" width="38" height="12" rx="2" fill="#617979"/>
+            <g id="rightSchoolFlag" transform="translate(0 122)"><g class="flag-wave">
+              <path d="M955 333H1106Q1098 354 1106 382T1106 433H955Z" fill="#238e69"/>
+              <path d="M955 333H1106Q1097 358 1106 382" fill="none" stroke="#70c4a1" stroke-width="4" opacity=".65"/>
+              <text x="1030" y="380" text-anchor="middle" fill="#f4f5db" font-size="19" font-weight="700" letter-spacing="3">校旗</text>
+              <text x="1030" y="406" text-anchor="middle" fill="#d4f0dd" font-size="12" letter-spacing="2">基础模型</text>
+            </g></g>
+          </g>
+
+          <g filter="url(#shadow)">
+            <rect x="595" y="58" width="12" height="502" rx="6" fill="url(#pole)"/>
+            <circle cx="601" cy="52" r="12" fill="#d5b66f"/>
+            <rect x="575" y="559" width="52" height="13" rx="2" fill="#526e6c"/>
+          </g>
+          <g id="targetFlag" opacity=".23" aria-hidden="true">
+            <path d="M608 92H813V229H608Z" fill="none" stroke="#a4783e" stroke-width="2" stroke-dasharray="7 8"/>
+          </g>
+          <g id="nationalFlag" class="national-flag" filter="url(#shadow)">
+            <svg x="608" y="92" width="205" height="137" viewBox="0 0 30 20" overflow="visible" aria-hidden="true">
+              <path d="M0 0H30Q29.35 5 30 10T30 20H0Z" fill="#de2910"/>
+              <g id="flagStars" fill="#ffde00"></g>
+            </svg>
+            <line x1="609" y1="92" x2="609" y2="229" stroke="#f5dbc5" stroke-width="2" opacity=".9"/>
+          </g>
+          <g class="scene-label" fill="#2c5554" font-size="16" text-anchor="middle" font-weight="600">
+            <text x="251" y="601">左侧校旗 · 校歌升旗</text>
+            <text x="601" y="601">五星红旗 · 升旗模拟</text>
+            <text x="950" y="601">右侧校旗 · 校歌升旗</text>
+          </g>
+        </svg>
+        <div class="scene-footer"><span>中央国旗杆为主杆</span><span>校歌环节两面校旗同步升起</span></div>
+      </section>
+
+      <aside class="control-panel" aria-label="升旗控制台">
+        <div class="ceremony-switch" role="group" aria-label="选择升旗环节">
+          <button id="nationalTab" class="ceremony-tab active" type="button" aria-pressed="true">国旗 · 国歌</button>
+          <button id="schoolTab" class="ceremony-tab" type="button" aria-pressed="false">校旗 · 校歌</button>
+        </div>
+        <div id="nationalControls" class="ceremony-view">
+        <div class="panel-head"><span class="section-number">02 / 节拍与操作</span><h2>手摇控制台</h2><p>用国歌时长规划每一圈，让国旗在尾音结束时抵达杆顶。</p></div>
+        <div class="mode-switch" role="group" aria-label="操作模式">
+          <button id="autoMode" class="mode active" type="button" aria-pressed="true">同步演示</button>
+          <button id="manualMode" class="mode" type="button" aria-pressed="false">手摇练习</button>
+        </div>
+
+        <div class="crank-area">
+          <div class="crank-ring" id="crank" role="slider" tabindex="0" aria-label="手摇轮" aria-valuemin="0" aria-valuemax="60" aria-valuenow="0" aria-valuetext="0圈">
+            <div id="crankWheel" class="crank-wheel"><span class="wheel-spoke spoke-a"></span><span class="wheel-spoke spoke-b"></span><span class="wheel-spoke spoke-c"></span><span class="wheel-center"></span><span class="wheel-handle"></span></div>
+            <span class="crank-hint" id="crankHint">按播放开始演示</span>
+          </div>
+          <div class="rotation-readout"><strong id="turnCount">00.0</strong><span>/ 60 圈</span></div>
+          <p id="modeHelp" class="mode-help">摇柄会按国歌进度自动转动，展示标准速度。</p>
+        </div>
+
+        <div class="transport">
+          <button id="playButton" class="primary-btn" type="button"><span id="playSymbol">▶</span><span id="playLabel">开始升旗</span></button>
+          <button id="resetButton" class="secondary-btn" type="button">重置</button>
+        </div>
+        <div class="timing-board">
+          <div><span>国歌播放</span><strong id="elapsedTime">00:00.00</strong><small>/ <span id="durationTime">00:47.80</span></small></div>
+          <div><span>有效升旗</span><strong id="raisingTime">00:00.00</strong><small>/ <span id="raisingDuration">00:40.61</span></small></div>
+        </div>
+        <p id="phaseHint" class="phase-hint">前奏约 7.19 秒，国旗暂不升起</p>
+        <input id="progressSeek" class="progress-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="拖动调整国歌播放进度" disabled>
+        <audio id="anthem" src="assets/anthem-orchestra.mp3" preload="metadata"></audio>
+
+        <div class="beat-section">
+          <div class="beat-heading"><div><span class="section-number">03 / 逐圈提示</span><h3>每圈起点一个提示音</h3></div><div id="beatLamp" class="beat-lamp" aria-hidden="true"></div></div>
+          <div class="beat-grid" id="beatGrid" aria-label="60圈节拍进度"></div>
+          <div class="beat-bottom"><span>当前提示 <strong id="cueNumber">— / 60</strong> · 手摇 88.65 次/分</span><label><input id="cueToggle" type="checkbox" checked> 节拍器提示音</label></div>
+        </div>
+        </div>
+
+        <div id="schoolControls" class="ceremony-view" hidden>
+          <div class="panel-head"><span class="section-number">04 / 校歌升旗</span><h2>两侧校旗 · 同步升旗</h2><p>国旗保持在杆顶；校歌前奏结束后，两面校旗同步升起，共摇 52 圈。</p></div>
+          <div class="mode-switch" role="group" aria-label="校旗操作模式">
+            <button id="schoolAutoMode" class="mode active" type="button" aria-pressed="true">同步演示</button>
+            <button id="schoolManualMode" class="mode" type="button" aria-pressed="false">手摇练习</button>
+          </div>
+          <div class="crank-area">
+            <div class="crank-ring" id="schoolCrank" role="slider" tabindex="0" aria-label="校旗手摇轮" aria-valuemin="0" aria-valuemax="52" aria-valuenow="0" aria-valuetext="0圈">
+              <div id="schoolCrankWheel" class="crank-wheel"><span class="wheel-spoke spoke-a"></span><span class="wheel-spoke spoke-b"></span><span class="wheel-spoke spoke-c"></span><span class="wheel-center"></span><span class="wheel-handle"></span></div>
+              <span class="crank-hint" id="schoolCrankHint">按播放开始演示</span>
+            </div>
+            <div class="rotation-readout"><strong id="schoolTurnCount">00.0</strong><span>/ 52 圈</span></div>
+            <p id="schoolModeHelp" class="mode-help">摇柄与两面校旗按校歌进度同步运动。</p>
+          </div>
+          <div class="transport">
+            <button id="schoolPlayButton" class="primary-btn" type="button"><span id="schoolPlaySymbol">▶</span><span id="schoolPlayLabel">开始升校旗</span></button>
+            <button id="schoolResetButton" class="secondary-btn" type="button">重置</button>
+          </div>
+          <div class="timing-board">
+            <div><span>校歌播放</span><strong id="schoolElapsedTime">00:00.00</strong><small>/ <span id="schoolDurationTime">01:26.80</span></small></div>
+            <div><span>有效升旗</span><strong id="schoolRaisingTime">00:00.00</strong><small>/ <span id="schoolRaisingDuration">01:02.80</span></small></div>
+          </div>
+          <p id="schoolPhaseHint" class="phase-hint">前奏 24 秒，两面校旗暂不升起</p>
+          <input id="schoolProgressSeek" class="progress-seek" type="range" min="0" max="1000" step="1" value="0" aria-label="拖动调整校歌播放进度" disabled>
+          <audio id="schoolSong" src="assets/school-song.mp3" preload="metadata"></audio>
+          <div class="beat-section">
+            <div class="beat-heading"><div><span class="section-number">05 / 校旗逐圈提示</span><h3>每圈起点主拍 · 半圈中间小拍</h3></div><div id="schoolBeatLamp" class="beat-lamp" aria-hidden="true"></div></div>
+            <div class="beat-grid school-beat-grid" id="schoolBeatGrid" aria-label="校旗52圈104拍节拍进度"></div>
+            <div class="beat-bottom"><span>当前圈 <strong id="schoolCueNumber">— / 52</strong> · 拍点 <strong id="schoolBeatNumber">— / 104</strong></span><label><input id="schoolCueToggle" type="checkbox" checked> 节拍器提示音</label></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section id="nationalMetrics" class="metrics" aria-label="国旗升旗节拍计算">
+      <div><span class="metric-label">可听尾音终点</span><strong>47.80 <small>秒</small></strong><p>原文件 49.52 秒，末尾为淡出</p></div>
+      <div><span class="metric-label">前奏等待</span><strong>7.19 <small>秒</small></strong><p>按官方曲谱推算的旋律入点</p></div>
+      <div><span class="metric-label">有效升旗时长</span><strong>40.61 <small>秒</small></strong><p>47.80 − 7.19</p></div>
+      <div><span class="metric-label">60 圈节奏</span><strong>0.6768 <small>秒/圈</small></strong><p>88.65 次/分 · 1.083 原曲拍/圈</p></div>
+    </section>
+    <section id="schoolMetrics" class="metrics" aria-label="校旗升旗节拍计算" hidden>
+      <div><span class="metric-label">校歌可听尾音终点</span><strong>86.80 <small>秒</small></strong><p>原文件约 91.66 秒，末尾为淡出</p></div>
+      <div><span class="metric-label">前奏等待</span><strong>24.00 <small>秒</small></strong><p>按提供的校歌入点设定</p></div>
+      <div><span class="metric-label">有效升旗时长</span><strong>62.80 <small>秒</small></strong><p>86.80 − 24.00</p></div>
+      <div><span class="metric-label">52 圈节奏</span><strong>1.2077 <small>秒/圈</small></strong><p>49.68 圈/分 · 104 拍约 99.36 次/分</p></div>
+    </section>
+    <footer><span>升旗教学与流程规划模拟 · 校旗图案仍为绿色基础模型</span><span>国歌与校歌分别控制</span></footer>
+  </div>
+</body>
+</html>
