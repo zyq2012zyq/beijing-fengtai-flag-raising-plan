@@ -1,0 +1,254 @@
+/* Presentation layer only. The ceremony timing and controls remain in script.js. */
+:root {
+  --paper: #f5f2ea;
+  --ink: #203b37;
+  --muted: #7b8b82;
+  --red: #ab3b31;
+  --gold: #bd9659;
+  --edge: #e4e2d8;
+  --serif: 'Songti SC', 'Noto Serif SC', 'SimSun', serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+html { scroll-behavior: smooth; }
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 6% 0%, #fffaf0 0, transparent 30%),
+    radial-gradient(circle at 94% 12%, #e5ede6 0, transparent 29%),
+    linear-gradient(155deg, #f6f4ed, #eef1ec 68%, #f7f2e8);
+}
+button, input { font: inherit; }
+.app-shell {
+  position: relative;
+  max-width: 1660px;
+  padding: 30px clamp(18px, 3vw, 52px) 24px;
+}
+.app-shell::before {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 370px;
+  height: 370px;
+  border: 1px solid #cda97124;
+  border-radius: 50%;
+  box-shadow: 0 0 0 55px #cda97109, 0 0 0 110px #cda97106;
+  content: '';
+  pointer-events: none;
+  transform: translate(20%, -68%);
+}
+.app-shell > * { position: relative; }
+
+/* A ceremonial identity with warm paper, vermilion, and brass. */
+.topbar { gap: 19px; padding: 0 3px 27px; animation: reveal .7s both; }
+.brand-mark {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #deb98c;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #b44535, #86271f);
+  box-shadow: 0 12px 26px #8a2b2429, inset 0 1px #ffffff55;
+  color: #f7e1aa;
+  font: 700 32px var(--serif);
+  transform: rotate(-4deg);
+}
+.brand-mark::after {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #f6e5c260;
+  border-radius: 13px;
+  content: '';
+}
+.eyebrow, .section-number, .metric-label { font-size: 10px; letter-spacing: .17em; }
+.eyebrow { color: #a47c4e; }
+.topbar h1 {
+  margin: 3px 0 2px;
+  color: #253d3a;
+  font: 700 clamp(25px, 2.2vw, 35px)/1.3 var(--serif);
+  letter-spacing: .08em;
+}
+.subtitle { color: #75857d; font-size: 12px; letter-spacing: .04em; }
+.version {
+  padding: 9px 15px;
+  border-color: #e4ded1;
+  background: #ffffffad;
+  box-shadow: 0 5px 18px #53664e0a;
+  color: #786d5d;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.main-grid { grid-template-columns: minmax(0,1.7fr) minmax(350px,.83fr); gap: 18px; }
+.scene-panel, .control-panel, .metrics {
+  border: 1px solid var(--edge);
+  border-radius: 22px;
+  background: #fffefa;
+  box-shadow: 0 22px 55px #34483b0e, 0 2px 8px #34483b08;
+}
+.scene-panel { animation: reveal .8s .08s both; }
+.scene-header { padding: 22px 28px 19px; }
+.section-number { color: #ad8959; }
+.scene-header h2, .panel-head h2 {
+  color: var(--ink);
+  font: 700 21px/1.35 var(--serif);
+  letter-spacing: .04em;
+}
+.live-tag {
+  padding: 8px 13px;
+  border: 1px solid #d8e8d9;
+  background: #f0f7ee;
+  color: #39715d;
+  font-size: 11px;
+  font-weight: 700;
+}
+#statusLight { animation: breathing 2.6s ease-in-out infinite; }
+.flag-scene { min-height: 390px; background: #e2ebe6; }
+.flag-scene > circle { animation: sunlight 8s ease-in-out infinite; }
+.flag-scene > path:nth-of-type(1) { animation: drift 11s ease-in-out infinite alternate; }
+.flag-scene > path:nth-of-type(2) { animation: drift 14s ease-in-out -4s infinite alternate-reverse; }
+.flag-wave, #leftSchoolFlag .flag-wave, #rightSchoolFlag .flag-wave {
+  transform-origin: left center;
+  animation: flag-breeze 4.4s ease-in-out infinite;
+}
+#rightSchoolFlag .flag-wave { animation-delay: -2.2s; }
+.national-flag > svg { transform-origin: 0 50%; animation: flag-breeze 3.8s ease-in-out infinite; }
+.scene-footer {
+  padding: 15px 28px;
+  border-top-color: #e2e9e0;
+  background: #f8f9f4;
+  color: #75877f;
+  letter-spacing: .025em;
+}
+.scene-footer span::before { margin-right: 8px; color: #c9a06c; content: '◆'; font-size: 8px; }
+
+.control-panel {
+  padding: 21px 24px 22px;
+  background: linear-gradient(155deg, #fffefa, #fdfcf7 55%, #f8faf5);
+  animation: reveal .8s .18s both;
+}
+.ceremony-switch, .mode-switch {
+  border: 1px solid #e4e8e0;
+  background: #f0f2eb;
+}
+.ceremony-switch { margin-bottom: 21px; }
+.ceremony-tab, .mode { transition: background .25s, color .25s, box-shadow .25s, transform .25s; }
+.ceremony-tab:hover, .mode:hover { color: #862b26; }
+.ceremony-tab.active, .mode.active { color: #862b26; box-shadow: 0 3px 12px #2e403d16; }
+.ceremony-tab:focus-visible, .mode:focus-visible, .transport button:focus-visible {
+  outline: 3px solid #caa061;
+  outline-offset: 2px;
+}
+.panel-head p { color: #7a8980; line-height: 1.7; }
+.crank-area { padding-top: 17px; }
+.crank-ring {
+  border-color: #dfd8c6;
+  background: radial-gradient(circle, #fffdf6 0 42%, #eeeae0 43% 50%, #f8f6ee 51% 64%, #e5e4d8 65%);
+  box-shadow: 0 14px 30px #2d514324, inset 0 4px 14px #63553f1a, 0 0 0 10px #f2eee5;
+  transition: box-shadow .25s, transform .25s, opacity .25s;
+}
+.crank-ring:hover { box-shadow: 0 18px 35px #2d51442c, inset 0 4px 14px #63553f1a, 0 0 0 10px #f2eee5; }
+.crank-ring:focus-visible { outline-color: #caa061; outline-offset: 12px; }
+.crank-ring.dragging { transform: scale(1.025); }
+.crank-ring.waiting { opacity: .63; }
+.crank-wheel { border-color: #42635c; box-shadow: 0 6px 14px #24413931, inset 0 2px 7px #24413926; }
+.wheel-spoke { background: linear-gradient(#81998e, #42635c); }
+.wheel-center { border-color: #a9baa9; background: #355950; }
+.wheel-handle { border-color: #f3dca6; background: #bd8b43; }
+.crank-hint { color: #92988b; }
+.rotation-readout { color: #8b9389; }
+.rotation-readout strong { color: #25463e; font-size: 38px; }
+.mode-help { color: #7b8a80; }
+.transport button { height: 45px; transition: transform .2s, background .2s, box-shadow .2s; }
+.transport button:hover { transform: translateY(-2px); }
+.transport button:active { transform: translateY(0); }
+.primary-btn {
+  border-color: #a6372d;
+  background: linear-gradient(120deg, #9a3028, #bd4938 53%, #9a3028);
+  background-size: 200% 100%;
+  box-shadow: 0 8px 19px #aa342c38;
+  color: #fff9ec;
+}
+.primary-btn:hover { background-position: 100% 0; box-shadow: 0 10px 23px #aa342c4b; }
+.secondary-btn { border-color: #dddcd0; background: #fffefa; color: #637367; }
+.secondary-btn:hover { background: #f4f2e9; }
+.timing-board > div { border-color: #e8e8dc; background: #f8f8f1; }
+.timing-board > div > span { color: #819087; }
+.timing-board strong { color: #284e43; }
+.timing-board small, .phase-hint { color: #89978b; }
+.progress-seek::-webkit-slider-runnable-track { background: linear-gradient(to right,#ac4438 0%,#d8ad69 var(--progress),#e7eadd var(--progress),#e7eadd 100%); }
+.progress-seek::-moz-range-track { background: linear-gradient(to right,#ac4438 0%,#d8ad69 var(--progress),#e7eadd var(--progress),#e7eadd 100%); }
+.progress-seek::-webkit-slider-thumb { background: #a83d31; }
+.progress-seek::-moz-range-thumb { background: #a83d31; }
+.progress-seek:focus-visible { outline-color: #caa061; }
+.beat-section { border-top-color: #e8e8dc; }
+.beat-heading h3 { color: #35554b; font-family: var(--serif); }
+.beat-lamp.active { background: #d4a052; box-shadow: 0 0 0 1px #dabb82, 0 0 20px #e4ac57; }
+.beat-grid span { background: #e1e9db; transition: background .2s, transform .2s; }
+.beat-grid span:nth-child(10n+1) { background: #c6d5c5; }
+.beat-grid span.done { background: #4c8a6d; }
+.beat-grid span.current { transform: scaleY(1.45); background: #d39a4a; box-shadow: 0 0 0 2px #efd7a9; }
+.beat-bottom { color: #839086; }
+.beat-bottom strong { color: #3e6555; }
+.beat-bottom input { accent-color: #ad4835; }
+
+.metrics { padding: 18px 0; animation: reveal .8s .28s both; }
+.metrics > div { position: relative; padding: 8px 24px; border-right-color: #eae9df; }
+.metrics > div::before {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ba4a36, #d2aa69);
+  content: '';
+}
+.metric-label { color: #a08764; }
+.metrics strong { color: #27463d; font-size: 26px; }
+.metrics small { color: #809184; }
+.metrics p { color: #919a8d; line-height: 1.45; }
+footer { padding-top: 20px; color: #919a8f; }
+
+@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes breathing { 50% { box-shadow: 0 0 0 7px #69a38c15, 0 0 13px #69a38c7a; } }
+@keyframes sunlight { 50% { opacity: .88; transform: scale(1.035); transform-origin: 970px 125px; } }
+@keyframes drift { to { transform: translateX(9px); } }
+@keyframes flag-breeze { 0%,100% { transform: skewY(0deg) scaleX(1); } 50% { transform: skewY(-1deg) scaleX(.985); } }
+
+@media (max-width: 1100px) {
+  .main-grid { grid-template-columns: minmax(0,1.45fr) minmax(340px,1fr); }
+  .scene-header { padding: 19px 21px 17px; }
+  .control-panel { padding: 19px; }
+  .scene-footer { padding: 14px 21px; }
+}
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .flag-scene { max-height: 650px; }
+  .metrics > div { padding: 8px 16px; }
+}
+@media (max-width: 620px) {
+  .app-shell { padding: 18px 12px 22px; }
+  .topbar { gap: 12px; padding: 0 4px 18px; }
+  .topbar h1 { font-size: 23px; }
+  .brand-mark { width: 50px; height: 50px; border-radius: 14px; font-size: 26px; }
+  .brand-mark::after { border-radius: 9px; }
+  .eyebrow { font-size: 9px; }
+  .subtitle { font-size: 10px; }
+  .scene-panel, .control-panel, .metrics { border-radius: 17px; }
+  .scene-header { padding: 16px; }
+  .scene-header h2, .panel-head h2 { font-size: 18px; }
+  .live-tag { padding: 7px 9px; font-size: 10px; }
+  .flag-scene { min-height: 260px; }
+  .scene-footer { padding: 12px 15px; font-size: 10px; }
+  .control-panel { padding: 17px; }
+  .metrics { padding: 8px 0; }
+  .metrics > div { padding: 12px 16px; }
+  .metrics > div:nth-child(-n+2) { border-bottom-color: #eae9df; }
+  .metrics strong { font-size: 22px; }
+  footer { font-size: 10px; line-height: 1.8; }
+  footer span { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
