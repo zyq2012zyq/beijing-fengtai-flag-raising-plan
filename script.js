@@ -150,7 +150,10 @@ function render() {
     beats[i].classList.toggle("done", i < currentCue || finished);
     beats[i].classList.toggle("current", i === currentCue && !finished);
   }
-  $("cueNumber").textContent = currentCue < 0 ? "— / 60" : `${String(currentCue + 1).padStart(2, "0")} / 60`;
+  const nationalCueText = currentCue < 0 ? "— / 60" : `${String(currentCue + 1).padStart(2, "0")} / 60`;
+  $("cueNumber").textContent = nationalCueText;
+  $("nationalTempoCue").textContent = nationalCueText;
+  $("nationalTempoCard").classList.toggle("is-running", !audio.paused && !finished && time >= PRELUDE_SECONDS);
 
   if (!audio.paused && !finished && currentCue > lastCueIndex) {
     // The first cue of each revolution is tied to the playback clock.
@@ -393,7 +396,10 @@ function renderSchool() {
     schoolBeats[i].classList.toggle("current", i === cue && !finished);
   }
   $("schoolCueNumber").textContent = cue < 0 ? `— / ${SCHOOL_TURNS}` : `${String(Math.floor(cue / SCHOOL_BEATS_PER_TURN) + 1).padStart(2, "0")} / ${SCHOOL_TURNS}`;
-  $("schoolBeatNumber").textContent = cue < 0 ? `— / ${SCHOOL_BEAT_COUNT}` : `${String(cue + 1).padStart(3, "0")} / ${SCHOOL_BEAT_COUNT}`;
+  const schoolBeatText = cue < 0 ? `— / ${SCHOOL_BEAT_COUNT}` : `${String(cue + 1).padStart(3, "0")} / ${SCHOOL_BEAT_COUNT}`;
+  $("schoolBeatNumber").textContent = schoolBeatText;
+  $("schoolTempoBeat").textContent = schoolBeatText;
+  $("schoolTempoCard").classList.toggle("is-running", !schoolAudio.paused && !finished && time >= SCHOOL_PRELUDE_SECONDS);
   if (!schoolAudio.paused && !finished && cue > schoolLastCueIndex) {
     playCue("schoolBeatLamp", "schoolCueToggle", cue % SCHOOL_BEATS_PER_TURN === 1);
     schoolLastCueIndex = cue;
@@ -499,6 +505,8 @@ function setCeremonyView(next) {
     tab.classList.toggle("active", name === next);
     tab.setAttribute("aria-pressed", name === next ? "true" : "false");
   }
+  $("nationalGuide").classList.toggle("active", next === "national");
+  $("schoolGuide").classList.toggle("active", next === "school");
   showStatus(next === "national" ? nationalStatus : schoolStatus);
   positionNationalFlag(isFinished() ? TOTAL_TURNS : mode === "auto" ? targetTurns() : manualTurns);
   renderSchool();

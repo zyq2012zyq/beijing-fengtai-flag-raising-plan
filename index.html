@@ -35,6 +35,7 @@
             <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d9e7e5"/><stop offset=".65" stop-color="#eef2e9"/><stop offset="1" stop-color="#f3e8d1"/></linearGradient>
             <linearGradient id="pole" x2="1" y2=".2"><stop stop-color="#768484"/><stop offset=".35" stop-color="#e5e9e3"/><stop offset=".65" stop-color="#91a1a0"/><stop offset="1" stop-color="#596e6d"/></linearGradient>
             <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#aab9a8"/><stop offset="1" stop-color="#738e83"/></linearGradient>
+            <linearGradient id="schoolCloth" x1="0" y1="0" x2="1" y2=".2"><stop stop-color="#206a51"/><stop offset=".48" stop-color="#2f8f69"/><stop offset="1" stop-color="#237757"/></linearGradient>
             <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#244243" flood-opacity=".18"/></filter>
             <pattern id="paving" width="75" height="28" patternUnits="userSpaceOnUse"><path d="M0 0H75M0 28H75M38 0V28" fill="none" stroke="#dae0d5" stroke-opacity=".5" stroke-width="2"/></pattern>
           </defs>
@@ -51,22 +52,30 @@
             <rect x="246" y="151" width="10" height="409" rx="5" fill="url(#pole)"/>
             <circle cx="251" cy="147" r="9" fill="#d8bd7e"/>
             <rect x="232" y="559" width="38" height="12" rx="2" fill="#617979"/>
-            <g id="leftSchoolFlag" transform="translate(0 122)"><g class="flag-wave">
-              <path d="M256 333H407Q399 354 407 382T407 433H256Z" fill="#238e69"/>
-              <path d="M256 333H407Q398 358 407 382" fill="none" stroke="#70c4a1" stroke-width="4" opacity=".65"/>
-              <text x="330" y="380" text-anchor="middle" fill="#f4f5db" font-size="19" font-weight="700" letter-spacing="3">校旗</text>
-              <text x="330" y="406" text-anchor="middle" fill="#d4f0dd" font-size="12" letter-spacing="2">基础模型</text>
+            <g id="leftSchoolFlag" transform="translate(0 122)"><g class="school-flag-cloth">
+              <path d="M256 333C303 328 354 337 407 332Q396 354 406 382Q415 409 407 433C353 428 303 437 256 432Z" fill="url(#schoolCloth)" stroke="#21684f" stroke-width="2"/>
+              <path d="M260 339C310 335 358 342 398 338M260 426C310 431 354 424 399 428" fill="none" stroke="#a6d3b6" stroke-width="2" opacity=".65"/>
+              <path d="M269 339Q278 382 269 427" fill="none" stroke="#0e503c" stroke-width="11" opacity=".17"/>
+              <circle cx="330" cy="380" r="27" fill="#f4edd8" opacity=".96"/><circle cx="330" cy="380" r="22" fill="none" stroke="#ba9b63" stroke-width="1.6"/>
+              <path d="M315 385Q323 381 330 386Q337 381 345 385V394Q337 390 330 395Q323 390 315 394Z" fill="none" stroke="#247358" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M330 384V394M322 378L330 367L338 378" fill="none" stroke="#247358" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="330" cy="365" r="2.5" fill="#bd995e"/>
+              <text x="330" y="420" text-anchor="middle" fill="#eef6eb" font-size="11" font-weight="700" letter-spacing="2">校旗示意</text>
             </g></g>
           </g>
           <g class="side-pole" filter="url(#shadow)">
             <rect x="945" y="151" width="10" height="409" rx="5" fill="url(#pole)"/>
             <circle cx="950" cy="147" r="9" fill="#d8bd7e"/>
             <rect x="931" y="559" width="38" height="12" rx="2" fill="#617979"/>
-            <g id="rightSchoolFlag" transform="translate(0 122)"><g class="flag-wave">
-              <path d="M955 333H1106Q1098 354 1106 382T1106 433H955Z" fill="#238e69"/>
-              <path d="M955 333H1106Q1097 358 1106 382" fill="none" stroke="#70c4a1" stroke-width="4" opacity=".65"/>
-              <text x="1030" y="380" text-anchor="middle" fill="#f4f5db" font-size="19" font-weight="700" letter-spacing="3">校旗</text>
-              <text x="1030" y="406" text-anchor="middle" fill="#d4f0dd" font-size="12" letter-spacing="2">基础模型</text>
+            <g id="rightSchoolFlag" transform="translate(0 122)"><g class="school-flag-cloth">
+              <path d="M955 333C1002 328 1053 337 1106 332Q1095 354 1105 382Q1114 409 1106 433C1052 428 1002 437 955 432Z" fill="url(#schoolCloth)" stroke="#21684f" stroke-width="2"/>
+              <path d="M959 339C1009 335 1057 342 1097 338M959 426C1009 431 1053 424 1098 428" fill="none" stroke="#a6d3b6" stroke-width="2" opacity=".65"/>
+              <path d="M968 339Q977 382 968 427" fill="none" stroke="#0e503c" stroke-width="11" opacity=".17"/>
+              <circle cx="1029" cy="380" r="27" fill="#f4edd8" opacity=".96"/><circle cx="1029" cy="380" r="22" fill="none" stroke="#ba9b63" stroke-width="1.6"/>
+              <path d="M1014 385Q1022 381 1029 386Q1036 381 1044 385V394Q1036 390 1029 395Q1022 390 1014 394Z" fill="none" stroke="#247358" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M1029 384V394M1021 378L1029 367L1037 378" fill="none" stroke="#247358" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="1029" cy="365" r="2.5" fill="#bd995e"/>
+              <text x="1029" y="420" text-anchor="middle" fill="#eef6eb" font-size="11" font-weight="700" letter-spacing="2">校旗示意</text>
             </g></g>
           </g>
 
@@ -92,6 +101,14 @@
           </g>
         </svg>
         <div class="scene-footer"><span>中央国旗杆为主杆</span><span>校歌环节两面校旗同步升起</span></div>
+      </section>
+
+      <section class="guide-panel" aria-label="升旗流程提示">
+        <div class="guide-heading"><span class="section-number">流程提示</span><h2>按时间入场，按节拍升旗</h2></div>
+        <div class="guide-steps">
+          <div id="nationalGuide" class="guide-step active"><span class="guide-index">01</span><div><strong>国旗 · 国歌</strong><p>前奏 7.19 秒待命；随后中央国旗按 60 圈升起，两侧校旗保持在杆底。</p></div></div>
+          <div id="schoolGuide" class="guide-step"><span class="guide-index">02</span><div><strong>校旗 · 校歌</strong><p>国旗固定于杆顶；校歌 24 秒后，两侧校旗按 52 圈同步升起。</p></div></div>
+        </div>
       </section>
 
       <aside class="control-panel" aria-label="升旗控制台">
@@ -180,7 +197,19 @@
       <div><span class="metric-label">有效升旗时长</span><strong>62.80 <small>秒</small></strong><p>86.80 − 24.00</p></div>
       <div><span class="metric-label">52 圈节奏</span><strong>1.2077 <small>秒/圈</small></strong><p>49.68 圈/分 · 104 拍约 99.36 次/分</p></div>
     </section>
-    <footer><span>升旗教学与流程规划模拟 · 校旗图案仍为绿色基础模型</span><span>国歌与校歌分别控制</span></footer>
+    <section class="tempo-deck" aria-label="升旗节拍器读数">
+      <div class="tempo-card national-tempo" id="nationalTempoCard">
+        <div class="tempo-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M21 52h22L39 18H25Z"/><path d="M17 53h30M32 18V9M32 29l13-14"/><circle cx="45" cy="15" r="3"/></svg></div>
+        <div class="tempo-copy"><span class="section-number">国旗 · 国歌</span><h2>升国旗节拍器</h2><p>每圈起点提示一次 · 60 圈</p></div>
+        <div class="tempo-values"><div><strong>88.65</strong><span>次 / 分</span></div><p>当前提示 <output id="nationalTempoCue">— / 60</output></p></div>
+      </div>
+      <div class="tempo-card school-tempo" id="schoolTempoCard">
+        <div class="tempo-logo" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M21 52h22L39 18H25Z"/><path d="M17 53h30M32 18V9M32 29l13-14"/><circle cx="45" cy="15" r="3"/></svg></div>
+        <div class="tempo-copy"><span class="section-number">校旗 · 校歌</span><h2>升校旗节拍器</h2><p>每圈主拍与半圈小拍 · 49.68 圈 / 分</p></div>
+        <div class="tempo-values"><div><strong>99.36</strong><span>拍 / 分</span></div><p>当前节拍 <output id="schoolTempoBeat">— / 104</output></p></div>
+      </div>
+    </section>
+    <footer><span>升旗教学与流程规划模拟 · 校旗图案为示意设计，非正式校旗</span><span>国歌与校歌分别控制</span></footer>
   </div>
 </body>
 </html>

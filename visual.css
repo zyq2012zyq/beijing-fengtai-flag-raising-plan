@@ -80,14 +80,20 @@ button, input { font: inherit; }
   white-space: nowrap;
 }
 
-.main-grid { grid-template-columns: minmax(0,1.7fr) minmax(350px,.83fr); gap: 18px; }
+.main-grid {
+  grid-template-columns: minmax(0,1.7fr) minmax(350px,.83fr);
+  grid-template-areas: 'scene controls' 'guide controls';
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: 18px;
+}
 .scene-panel, .control-panel, .metrics {
   border: 1px solid var(--edge);
   border-radius: 22px;
   background: #fffefa;
   box-shadow: 0 22px 55px #34483b0e, 0 2px 8px #34483b08;
 }
-.scene-panel { animation: reveal .8s .08s both; }
+.scene-panel { grid-area: scene; align-self: start; animation: reveal .8s .08s both; }
 .scene-header { padding: 22px 28px 19px; }
 .section-number { color: #ad8959; }
 .scene-header h2, .panel-head h2 {
@@ -104,16 +110,13 @@ button, input { font: inherit; }
   font-weight: 700;
 }
 #statusLight { animation: breathing 2.6s ease-in-out infinite; }
-.flag-scene { min-height: 390px; background: #e2ebe6; }
+.flag-scene { flex: none; min-height: 0; aspect-ratio: 1200 / 650; background: #e2ebe6; }
 .flag-scene > circle { animation: sunlight 8s ease-in-out infinite; }
 .flag-scene > path:nth-of-type(1) { animation: drift 11s ease-in-out infinite alternate; }
 .flag-scene > path:nth-of-type(2) { animation: drift 14s ease-in-out -4s infinite alternate-reverse; }
-.flag-wave, #leftSchoolFlag .flag-wave, #rightSchoolFlag .flag-wave {
-  transform-origin: left center;
-  animation: flag-breeze 4.4s ease-in-out infinite;
-}
-#rightSchoolFlag .flag-wave { animation-delay: -2.2s; }
-.national-flag > svg { transform-origin: 0 50%; animation: flag-breeze 3.8s ease-in-out infinite; }
+/* Flag positions come only from script.js. No idle motion or CSS transforms on the flags. */
+.flag-wave, #leftSchoolFlag .flag-wave, #rightSchoolFlag .flag-wave,
+.national-flag > svg, .school-flag-cloth { animation: none; transform: none; }
 .scene-footer {
   padding: 15px 28px;
   border-top-color: #e2e9e0;
@@ -122,8 +125,29 @@ button, input { font: inherit; }
   letter-spacing: .025em;
 }
 .scene-footer span::before { margin-right: 8px; color: #c9a06c; content: '◆'; font-size: 8px; }
+.guide-panel {
+  grid-area: guide;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: minmax(170px,.6fr) minmax(0,1.4fr);
+  align-items: center;
+  gap: 18px;
+  padding: 19px 24px;
+  border: 1px solid var(--edge);
+  border-radius: 20px;
+  background: linear-gradient(120deg,#fffefa,#f7f8f2);
+  box-shadow: 0 14px 36px #34483b0b;
+}
+.guide-heading h2 { margin: 6px 0 0; color: var(--ink); font: 700 18px/1.45 var(--serif); }
+.guide-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.guide-step { display: flex; gap: 10px; min-width: 0; padding: 12px; border: 1px solid #e7e9de; border-radius: 12px; background: #fffdf7; opacity: .7; transition: border-color .25s, background .25s, opacity .25s; }
+.guide-step.active { border-color: #dfc7a5; background: #fff9ed; opacity: 1; }
+.guide-index { color: #b89560; font: 700 18px var(--serif); }
+.guide-step strong { color: #32534a; font-size: 12px; }
+.guide-step p { margin: 4px 0 0; color: #7d8c82; font-size: 10px; line-height: 1.55; }
 
 .control-panel {
+  grid-area: controls;
   padding: 21px 24px 22px;
   background: linear-gradient(155deg, #fffefa, #fdfcf7 55%, #f8faf5);
   animation: reveal .8s .18s both;
@@ -207,24 +231,68 @@ button, input { font: inherit; }
 .metrics strong { color: #27463d; font-size: 26px; }
 .metrics small { color: #809184; }
 .metrics p { color: #919a8d; line-height: 1.45; }
+.tempo-deck { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 18px; }
+.tempo-card {
+  display: grid;
+  grid-template-columns: 68px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px 24px;
+  border: 1px solid #e2e2d7;
+  border-radius: 19px;
+  background: #fffefa;
+  box-shadow: 0 14px 36px #34483b0b;
+  transition: border-color .25s, box-shadow .25s;
+}
+.tempo-card.is-running { border-color: #d4b789; box-shadow: 0 14px 36px #34483b0b, 0 0 0 3px #c8a36a17; }
+.tempo-logo {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #ead3c7;
+  border-radius: 17px;
+  background: #f8ece4;
+  color: #a84434;
+}
+.tempo-logo svg { width: 48px; height: 48px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.tempo-logo svg path:first-child { fill: currentColor; fill-opacity: .12; }
+.tempo-logo svg circle { fill: currentColor; }
+.school-tempo .tempo-logo { border-color: #d8e8d7; background: #edf5ea; color: #327a5a; }
+.tempo-copy h2 { margin: 5px 0 4px; color: #25443d; font: 700 19px/1.3 var(--serif); }
+.tempo-copy p { margin: 0; color: #819087; font-size: 11px; line-height: 1.5; }
+.tempo-values { text-align: right; white-space: nowrap; }
+.tempo-values > div { display: flex; align-items: baseline; justify-content: flex-end; gap: 5px; }
+.tempo-values strong { color: #a84434; font-size: clamp(25px,2.4vw,36px); font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -.04em; }
+.school-tempo .tempo-values strong { color: #327a5a; }
+.tempo-values span { color: #8b9287; font-size: 11px; }
+.tempo-values p { margin: 7px 0 0; color: #819087; font-size: 11px; }
+.tempo-values output { margin-left: 4px; color: #31574a; font-weight: 800; font-variant-numeric: tabular-nums; }
+.tempo-card.is-running .tempo-logo { animation: tempo-glow 1.2s ease-in-out infinite; }
 footer { padding-top: 20px; color: #919a8f; }
 
 @keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes breathing { 50% { box-shadow: 0 0 0 7px #69a38c15, 0 0 13px #69a38c7a; } }
 @keyframes sunlight { 50% { opacity: .88; transform: scale(1.035); transform-origin: 970px 125px; } }
 @keyframes drift { to { transform: translateX(9px); } }
-@keyframes flag-breeze { 0%,100% { transform: skewY(0deg) scaleX(1); } 50% { transform: skewY(-1deg) scaleX(.985); } }
+@keyframes tempo-glow { 50% { box-shadow: 0 0 0 7px #c8a36a18; } }
 
 @media (max-width: 1100px) {
   .main-grid { grid-template-columns: minmax(0,1.45fr) minmax(340px,1fr); }
   .scene-header { padding: 19px 21px 17px; }
   .control-panel { padding: 19px; }
   .scene-footer { padding: 14px 21px; }
+  .guide-panel { display: block; }
+  .guide-heading { margin-bottom: 10px; }
 }
 @media (max-width: 900px) {
-  .main-grid { grid-template-columns: 1fr; }
+  .main-grid { grid-template-columns: 1fr; grid-template-areas: 'scene' 'guide' 'controls'; grid-template-rows: auto; }
   .flag-scene { max-height: 650px; }
   .metrics > div { padding: 8px 16px; }
+}
+@media (max-width: 760px) {
+  .tempo-deck { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
   .app-shell { padding: 18px 12px 22px; }
@@ -235,16 +303,25 @@ footer { padding-top: 20px; color: #919a8f; }
   .eyebrow { font-size: 9px; }
   .subtitle { font-size: 10px; }
   .scene-panel, .control-panel, .metrics { border-radius: 17px; }
+  .guide-panel { padding: 16px; border-radius: 17px; }
+  .guide-steps { grid-template-columns: 1fr; }
   .scene-header { padding: 16px; }
   .scene-header h2, .panel-head h2 { font-size: 18px; }
   .live-tag { padding: 7px 9px; font-size: 10px; }
-  .flag-scene { min-height: 260px; }
+  .flag-scene { min-height: 0; }
   .scene-footer { padding: 12px 15px; font-size: 10px; }
   .control-panel { padding: 17px; }
   .metrics { padding: 8px 0; }
   .metrics > div { padding: 12px 16px; }
   .metrics > div:nth-child(-n+2) { border-bottom-color: #eae9df; }
   .metrics strong { font-size: 22px; }
+  .tempo-card { grid-template-columns: 54px minmax(0,1fr); gap: 10px; padding: 15px; }
+  .tempo-logo { width: 50px; height: 50px; border-radius: 13px; }
+  .tempo-logo svg { width: 38px; height: 38px; }
+  .tempo-copy h2 { font-size: 16px; }
+  .tempo-values { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; padding-top: 8px; border-top: 1px solid #eeeae0; }
+  .tempo-values strong { font-size: 28px; }
+  .tempo-values p { margin: 0; }
   footer { font-size: 10px; line-height: 1.8; }
   footer span { display: block; }
 }
